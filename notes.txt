@@ -12,3 +12,10 @@ query ($random: Int) {
 you run this once without passing a random variable. You take the value of pageInfo.total, 
 generate a random number with that as the upper bound, you run the same query again, 
 but pass your random number as the random variable, you take the Page.media[0] value as your random anime.
+
+module.exports = {
+    name: 'ping',
+    run: async ({client, message, args}) => {
+        message.reply("pong")
+    }
+}

@@ -1,4 +1,4 @@
-const {getFiles} =  require("../util/functions")
+const {getFiles} =  require("../util/getFiles")
 
 module.exports = (bot) => {
     const {client} = bot

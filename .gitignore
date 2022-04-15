@@ -1,3 +1,6 @@
 .env
 yarn.lock
 node_modules/
+notes
+discordCommands/ping2.js
+discordCommands/ping.js

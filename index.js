@@ -4,7 +4,7 @@ const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"]});
 
 let bot = {
     client,
-    prefix: "c."
+    prefix: process.env.PREFIX
 }
 
 client.discordCommands = new Discord.Collection();

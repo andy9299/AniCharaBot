@@ -1,6 +1,5 @@
 <h3 align="center">AniCharaBot</h3>
 <h5 align="center">A simple bot for experience in GraphQL and Javascript</h5>
---- 
 
 ## Usage
 

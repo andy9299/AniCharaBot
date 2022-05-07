@@ -1,10 +1,11 @@
 const api = require("../util/api");
 const query = require("../queries/randomCharacter");
-const { MessageEmbed } = require("discord.js");
-const { shortenDescription } =  require("../util/shortenDescription")
+const Discord = require("discord.js");
+const { shortenDescription } =  require("../util/shortenDescription");
+const discordCommands = require("../handlers/discordCommands");
 
 module.exports = {
-    name: 'r',
+    name: 'g',
     run: async ({client, message, args}) => {
         if (!(isNaN(args[0]))){
             var popularityLimit = args[0]
@@ -22,11 +23,24 @@ module.exports = {
         if (data.name.last != null){
             name += ` ${data.name.last}`;
         }
-        const newEmbed = new MessageEmbed()
-            .setTitle(name)
-            .setURL(data.siteUrl)
+        const newEmbed = new Discord.MessageEmbed()
+            .setTitle("Guess the Character!")
             .setImage(data.image.large)
-            .setDescription(shortenDescription(data.description));
         message.channel.send({embeds: [newEmbed]});
+        console.log("0");
+        let filter = m => !m.author.bot;
+        console.log("1");
+        const answer = await message.channel.awaitMessages({
+            filter: filter,
+            time: 30000,
+            max: 1
+        });
+        const ans = answer.first().content;
+        if ( name.toLowerCase() === ans.toLowerCase() ){
+            message.channel.send("Congrats!")
+        }
+        else {
+            message.channel.send("Wrong!")
+        }
     }
 }

@@ -1,5 +1,2 @@
 .env
-yarn.lock
 node_modules/
-notes.txt
-queries/randomMediaID.js

@@ -1,12 +1,12 @@
 const api = require("../util/api");
 const query = require("../queries/randomCharacter");
 const Discord = require("discord.js");
-const { shortenDescription } = require("../util/shortenDescription");
-const discordCommands = require("../handlers/discordCommands");
+
+const cd = 15000;
 
 module.exports = {
     name: 'g',
-    cooldown: 15000,
+    cooldown: cd,
     run: async ({ client, message, args }) => {
         if (!(isNaN(args[0]))) {
             var popularityLimit = args[0];
@@ -31,11 +31,11 @@ module.exports = {
         message.channel.send({ embeds: [newEmbed] });
         let collectorFilter = m => !m.author.bot;
         const collector = new Discord.MessageCollector(message.channel, {
-            time: 15000,
+            time: cd,
             filter: collectorFilter
         });
         collector.on('collect', ansMessage => {
-            if (ansMessage.content.toLowerCase == name.toLowerCase) {
+            if (ansMessage.content.toLowerCase() == name.toLowerCase()) {
                 collector.stop();
                 ansMessage.reply("Congrats!");
             }
